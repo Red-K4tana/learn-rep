@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: #4b4a45;
+			color: #cee2d3;
+		}
+		.titleH1, .text {
+			width: 200px;
+			padding: 10px 5px 10px 10px;
+			margin: 15px;
+			border-style: solid;
+			border-color: #12BBFA;
+			border-radius: 10px;
+			border-width: 5px;
+		}
+		.titleH2 {
+			width: 200px;
+			padding: 10px 5px 10px 10px;
+			margin: 15px;
+			border-style: solid;
+			border-color: #12BBFA;
+			border-radius: 10px;
+			border-width: 5px;
+		}
+		.text {
+			font-size: 25px;
+		}
+		p:not(.text p) {
+			width: 250px;
+			padding: 10px 5px 10px 10px;
+			margin: 15px;
+			border-style: solid;
+			border-color: #E27070;
+			border-radius: 10px;
+			border-width: 2px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<script>
+		let people =  [
+							{name: 'Mark', age: 21, buget: 5000},
+							{name: 'July', age: 32, buget: 13000},
+							{name: 'Tony', age: 22, buget: 10000},
+							{name: 'Kate', age: 30, buget: 5000}
+						];
+		let a = [3, -12, 0, 4, 0, 5, -8, 4, 23, 57, 0, -6, 23, 58, 98];
+		let b = [];
+		for (let i = 0; i < a.length; i++) {
+			if (a[i] >= 0) {
+				b.push(a[i]);
+			}
+		}
+		console.log('A - ' + '[' + a.join(', ') + ']');
+		console.log('B - ' + '[' + b.join(', ') + ']');
+		//=========filter======== фильтрация по признаку
+		let c = a.filter(currentValue/*, индекс эл-та, имя массива*/ => {
+			let x;
+			if (currentValue !== 0) { //weed out zeros
+				x = !(currentValue % 2); //weed out uneven
+			};
+			return x;
+		});
+		console.log('C - ' + '[' + c.join(', ') + ']');
+		//=========forEach======== итерация по элементам массива с определенными действиями
+		//присвоить переменной результат действия нельзя, массив не изменяется
+		c.forEach(currentValue => {
+			return currentValue * 2;
+		});
+		console.log('C - ' + '[' + c.join(', ') + ']');
+		//=========map======== совершение определенных действий над каждым элементом
+		//и присваивание результата другой переменной, посути создание нового массива
+		let d = a.map(currentValue/*, индекс эл-та, имя массива*/ => {
+			return currentValue * 2;
+		});
+		console.log('D - ' + '[' + d.join(', ') + ']');
+		//==================
+		let newPeople = people.map(person => person.age * 3);
+		console.log(newPeople);
+		//==========reduce========изменение элемента массива используя другой элемент
+		//например возрастание на шаг указанный в элементе, элемент является инкрементом
+		let amount = people.reduce((total, person) => total + person.buget, 0);
+		console.log(amount);
+		//=========find========поиск элемента по содержимому или объекта по свойству
+		//при чем показывается 1й подходящий элемент
+		let bugetFive = people.find(person => person.buget === 5000 && person.age === 30);
+		console.log(bugetFive);
+		let g = a.find(x => x === 23)
+		console.log(g)
+		//=========findIndex========то же самое что и find, но показывает индекс элемента
+		let bFive = people.findIndex(person => person.buget === 5000 && person.age === 30);
+			console.log(bFive);
+	</script>
+
+</body>
+</html>
