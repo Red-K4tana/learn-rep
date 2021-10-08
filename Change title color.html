@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>10 глава</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: #4b4a45;
+			color: #cee2d3;
+			font-family: Geneva, Arial, Helvetica, sans-serif;
+		}
+		.title, .text {
+			width: 200px;
+			padding: 10px 5px 10px 10px;
+			margin: 15px;
+			border-style: solid;
+			border-color: #12BBFA;
+			border-radius: 10px;
+			border-width: 5px;
+		}
+		.text {
+			font-size: 25px;
+
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="title" >
+		<h1>Игра "Виселица"!</h1>
+	</div>
+	<div class="text" >
+		<p id="heading">Угадай слово.</p>
+	</div>
+	<script>
+		/*
+		let doHomeworkAlarm = function() {
+			alert("time to do homework");
+		};
+		let timeoutId = setTimeout(doHomeworkAlarm, 5000);//установка таймера
+		//clearTimeout(timeoutId);//функция отмены таймера
+		
+		let counter = 1;
+		let printMessage = function () {
+			console.log('You look in console already ' + counter + 'second');				
+			counter++;
+		};
+		let intervalId = setInterval(printMessage, 1000);//начало работы функции интервала
+		
+		clearInterval(intervalId);//прекращение работы интервала, нужно указать в консоли
+		*/
+		//----плохая анимация элемента страницы с помощью setInterval
+		/*
+		let leftOffset = 0;
+ 		
+ 		let moveHeading = function () {
+ 			$('#heading').offset ({ left: leftOffset });
+ 			leftOffset++;
+
+ 			if (leftOffset > 200) {
+ 				leftOffset = 0;
+ 			}
+ 		};
+	 	let moveInterval = setInterval(moveHeading, 30);
+		*/
+
+		//-----метод .click (и изменение цвета по нажатию)
+		
+		$('h1').css('color', 'black')
+		       
+		$('h1').click (function (event) {
+			let r = Math.floor(Math.random() * 255);
+			let g = Math.floor(Math.random() * 255);
+			let b = Math.floor(Math.random() * 255);
+			let cR = 'rgb(' + r + ',' + g + ',' + b + ')';
+			console.log ('клик! ' + event.pageX + ' ' + event.pageY);
+			$('h1').css( 'color', cR);
+		});
+		
+		//----метод .mousemove
+		/*
+		$('html').mousemove(function (event) {
+			$('#heading').offset({ left: event.pageX, top: event.pageY})
+		});
+		*/
+	</script>
+</body>
+</html>
