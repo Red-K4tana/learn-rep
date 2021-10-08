@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: #4b4a45;
+			color: #cee2d3;
+		}
+		.title, .text {
+			width: 200px;
+			padding: 10px 5px 10px 10px;
+			margin: 15px;
+			border-style: solid;
+			border-color: #12BBFA;
+			border-radius: 10px;
+			border-width: 5px;
+		}
+		.text {
+			font-size: 25px;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="title">
+		<h1>Игра "Виселица"!</h1>
+	</div>
+	<div class="text">
+		<p>Угадай слово.</p>
+	</div>
+	<script>
+		//Игра виселица (ну типа...).
+		
+		//Массив со словами для игры.
+		var words = ["кино", "вино"];
+		//Выбираем случайное слово из массива.
+		var word = words[Math.floor(Math.random() * words.length)];
+		//Перевод слова в скрытое (подчеркивания).
+		var answerArray = [];
+		for (i = 0; i < word.length; i++) {
+			answerArray[i] = "_";
+		};
+		console.log(word);
+		alert("Угадайте слово по буквам - " + answerArray.join(" "));
+		remainingLetters = word.length;
+		remainingTry = word.length + 5;
+		//Начало игрового цикла.
+		while (remainingLetters > 0 && remainingTry > 0) {
+			var guess = prompt("Введите букву или нажмите Отмена для выхода.");
+			guess = guess.toLowerCase();
+			remainingTry--;
+			console.log(
+				"WHILE - remainingTry " + remainingTry +
+				" -- WHILE - remainingLetters " + remainingLetters)
+			//Проверка введенной буквы.
+			if (guess === null) {
+				break;
+			} else if (guess.length !== 1) {
+				alert("Введите только одну букву.");
+			} else {
+				//Обновление состояния игры. Цикл проверки буквы.
+				for (j = 0; j < answerArray.length; j++) {
+					if (word[j] === guess && answerArray[j] !== guess) {
+						answerArray[j] = guess;
+						remainingLetters--;
+					} else if (answerArray[j] === guess) {
+						remainingTry++;
+					};
+				};
+				alert("Вы угадали букву - " + answerArray.join(" "));
+			};
+		}
+		alert("Поздравляю! Слово отгадано - " + answerArray.join(" "));
+
+
+	</script>
+
+</body>
+</html>
