@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>10 глава</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			background-color: #4b4a45;
+			color: #cee2d3;
+			font-family: Geneva, Arial, Helvetica, sans-serif;
+		}
+		.title, .text {
+			width: 200px;
+			padding: 10px 5px 10px 10px;
+			margin: 15px;
+			border-style: solid;
+			border-color: #12BBFA;
+			border-radius: 10px;
+			border-width: 5px;
+		}
+		.text {
+			font-size: 25px;
+
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<div class="title" >
+		<h1>Игра "Виселица"!</h1>
+	</div>
+	<div class="text" id="heading">
+		<p>Угадай слово.</p>
+	</div>
+	<script>
+		//---- 1 упражнение
+		/*
+		function handler (event) {
+			$('#heading').offset({ left: event.pageX, top: event.pageY });
+		};
+		$('html').click(handler);
+		*/
+		//---- 2 упражнение
+		let leftOffset = 0;
+		let topOffset = 0;
+		let speedInterval = 30;
+		let directional = 'right';
+		let lettering;
+		let i = 0;
+		let clicks = 0;
+
+		function moveHeading () {
+			if (directional === 'right') {
+				$('#heading').offset ({ left: leftOffset });
+				leftOffset++;
+		
+				if (leftOffset > 200) {
+					leftOffset = 200;
+					directional = 'down';
+				};
+			} else if (directional === 'down') {
+				$('#heading').offset({ top: topOffset });
+				topOffset++;
+
+				if (topOffset > 200) {
+					topOffset = 200;
+					directional = 'left';
+				};
+			} else if (directional === 'left') {
+				$('#heading').offset({ left: leftOffset });
+				leftOffset--;
+
+				if (leftOffset < 1) {
+					leftOffset = 0;
+					directional = 'top';
+				};
+			} else if (directional === 'top') {
+				$('#heading').offset({ top: topOffset });
+				topOffset--;
+
+				if (topOffset < 1) {
+					topOffset = 0;
+					directional = 'right';
+				};
+			};
+		};	
+		
+		let moveInterval = setInterval(moveHeading, speedInterval);
+		console.log('вне функции ' + moveInterval);
+		
+		$('#heading').click(function stopAnima (event) {
+			clearInterval(moveInterval);
+			console.log('стопаем ' + moveInterval)
+			clicks++;
+			speedInterval-=5;
+			console.log(speedInterval);
+			$('#heading').text('speed ' + clicks);
+
+			if (clicks < 7) {
+				moveInterval = setInterval(moveHeading, speedInterval);
+				console.log('внутри функции ' + moveInterval);		
+			} else {
+				$('#heading').text('Накликал таки!!!');
+				
+			};
+		
+		/*
+		$("#heading").click(function () {
+     		clearInterval(moveInterval);
+    		speedInterval-=5;
+    		console.log(speedInterval);
+    		clicks++;
+
+    		if (clicks > 5) {
+        		$("#heading").text("Накликал-таки!");
+      		} else {
+        		moveInterval = setInterval(moveHeading, speedInterval);
+
+    		};
+		*/
+			
+			
+		});
+	</script>
+</body>
+</html>
