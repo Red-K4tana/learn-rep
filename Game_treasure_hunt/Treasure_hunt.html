@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Treasure Hunt</title>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	 <style>
+	 	* {
+	 		padding: 0;
+	 		margin: 0;
+	 	}
+	 	body {
+	 		background-color: #496D67;
+	 	}
+	 	.top_conteiner {
+	 		width: 330px;
+	 		height: 170px;
+			margin-left: 5px;
+	 		/* border: solid;
+	 		border-width: 2px;
+	 		border-color: #E55F5F;
+	 		border-radius: 5px; */
+
+	 	} 
+	 	.title, .state {
+	 		display: inline-block;	
+	 		margin: 5px 0px 0px 5px;
+	 		padding: 5px;
+	 		border: solid;
+	 		border-width: 3px;
+	 		border-color: #E55F5F;
+	 		border-radius: 7px;
+	 		color: #C2C2C2;
+	 	}
+		.title {
+			margin-right: 50px;
+		}
+	 	p {
+	 		font-size: 30px;
+	 	}
+	 	.map {
+	 		position: absolute;
+	 		margin: 5px 0px 0px 5px;
+	 		width: 1000px;
+	 		height: 700px;
+	 	}
+	 </style>
+</head>
+<body>
+	<div class="top_conteiner">
+		<div class="title">
+			<p>Treasure Hunt</p>
+		</div>
+		<div class="state">
+			<p id="state">Близость к кладу</p>	
+		</div>
+	</div>
+	<div class="mid_conteiner">
+		<div>
+			<img class="map" src="treasuremap.jpg" alt="">
+		</div>
+	</div>
+	<script src="script_treasure_hunt.js"></script>
+</body>
+</html>
