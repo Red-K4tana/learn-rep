@@ -59,3 +59,39 @@ const promFetchData = (userID) => {
 			alert('error ' + err)
 		})
 }
+/*-------------------------------------------------------------------------*/
+
+const inputAsync = document.querySelector('#input-async')
+const btnAsync = document.querySelector('#btn-async')
+let strInputAsync = ''
+
+inputAsync.addEventListener('input', (e) => {
+	strInputAsync = e.target.value
+})
+btnAsync.addEventListener('click', () => {
+	asyncFetchData(strInputAsync)
+})
+
+const asyncFetchData = async (userID) => {
+	const user = {
+		name: 'Ivan',
+		userID: 'user=',
+	}
+	const activeFunc = ()=> {
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				user.userID = user.userID + userID
+				if (Math.random() < 0.5) {
+					reject('да вашу мать!') // отрицательный результат
+				}
+				resolve(user.userID) // положительный результат
+			}, 300)
+		})
+	}
+	try {
+		let result = await activeFunc()
+		alert('Вот вам айдишник ' + result)
+	} catch (err) {
+		alert ('error ' + err)
+	}
+}
