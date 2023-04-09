@@ -88,10 +88,14 @@ const asyncFetchData = async (userID) => {
 			}, 300)
 		})
 	}
+	// обработка ответов промиса
+	// сюда resolve
 	try {
 		let result = await activeFunc()
 		alert('Вот вам айдишник ' + result)
-	} catch (err) {
+	}
+	// сюда reject
+	catch (err) {
 		alert ('error ' + err)
 	}
 }
